@@ -12,8 +12,7 @@ function cnt(B){var best={c:0,u:0},pre="aidetk_r06_"+B+"|";
     if(c>best.c)best={c:c,u:u};}}catch(e){}
   return best;}
 function complete(v){if(v.verdict==="reject")return !!v.reason&&(v.reason!=="other"||!!(v.note||"").trim());
-  if(v.verdict!=="include")return false;var a=v.row_label;if(!a)return false;
-  if(a==="typed"&&!(v.row_label_value||"").trim())return false;return true;}
+  if(v.verdict!=="include")return false;var a=v.row_label;return a==="lc"||a==="not_lc";}
 function ticks(){try{return JSON.parse(localStorage.getItem("aidets_r06_"+TOK)||"{}")||{};}catch(e){return {};}}
 function render(){var t=ticks(),done=0,all=0;
   ROWS.forEach(function(r){var tr=document.getElementById("r_"+r.page),st=tr.querySelector("[data-st]");all+=r.items;
